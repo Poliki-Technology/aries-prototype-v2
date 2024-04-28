@@ -21,4 +21,4 @@ class Context:
         self._state.context = self
 
     def taskLoop(self):
-        self.__state.taskLoop()
+        self._state.taskLoop()

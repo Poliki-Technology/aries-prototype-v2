@@ -10,10 +10,6 @@ class State(ABC):
     @context.setter
     def context(self, context: context.Context) -> None:
         self._context = context
-    
-    @abstractmethod
-    def __changeStateCondition(self) -> bool:
-        pass
 
     @abstractmethod
     def taskLoop(self) -> None:
@@ -21,28 +17,28 @@ class State(ABC):
 
 class Yellow(State):
     def __changeStateCondition(self) -> bool:
-        gpio = self.context().getGPIOController()
+        gpio = self._context.getGpioController()
         return gpio.get_input(1)
 
     def taskLoop(self) -> None:
         if not self.__changeStateCondition():
             return
 
-        gpio = self.context().getGPIOController()
+        gpio = self._context.getGpioController()
         gpio.post_output(1, False)
         gpio.post_output(2, True)
         self._context.setState(Red())
 
 class Red(State):
     def __changeStateCondition(self) -> bool:
-        gpio = self.context().getGPIOController()
+        gpio = self._context.getGpioController()
         return gpio.get_input(1)
 
     def taskLoop(self) -> None:
         if not self.__changeStateCondition():
             return
 
-        gpio = self.context().getGPIOController()
+        gpio = self._context.getGpioController()
         gpio.post_output(1, True)
         gpio.post_output(2, False)
         self._context.setState(Yellow())
