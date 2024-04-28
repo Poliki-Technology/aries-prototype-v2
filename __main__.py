@@ -5,7 +5,7 @@ import time
 
 load_dotenv()
 
-mainContext = context.Context(states.OpenCircuit())
+mainContext = context.Context(states.Yellow())
 
 while True:
   mainContext.taskLoop()

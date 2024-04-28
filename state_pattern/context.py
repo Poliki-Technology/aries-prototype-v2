@@ -10,6 +10,7 @@ class Context:
     def __init__(self, state: states.State) -> None:
         self.setState(state)
         self._gpioController = GpioController()
+        self._gpioController.post_output(1, True)
 
     def getGpioController(self) -> GpioController:
         return self._gpioController
