@@ -19,8 +19,5 @@ class Context:
         self._state = state
         self._state.context = self
 
-    def taskOne(self):
-        self._state.taskOne()
-    
-    def taskTwo(self):
-        self._state.taskTwo()
+    def taskLoop(self):
+        self.__state.taskLoop()
