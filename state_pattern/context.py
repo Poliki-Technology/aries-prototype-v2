@@ -17,8 +17,10 @@ class Context:
 
     def setState(self, state: states.State):
         print(f"Context: Transitioning to {type(state).__name__}")
+        self._state.ceaseState()
         self._state = state
         self._state.context = self
+        self._state.applyState()
 
     def taskLoop(self):
         self._state.taskLoop()

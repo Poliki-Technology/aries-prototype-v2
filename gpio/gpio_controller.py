@@ -56,6 +56,7 @@ class GpioController:
     return GPIO.input(self.__input_ports[input_gate - 1])
 
   def get_input(self, input_gate, signal_counts = 5, delay = 0.01):
+    print(f"GPIO:\treading input from {input_gate} {signal_counts} times.")
     result = 0
     for _ in range(signal_counts):
       result += self.__get_raw_input(input_gate)
@@ -63,4 +64,5 @@ class GpioController:
     return result * 2 > signal_counts
 
   def post_output(self, output_gate, signal):
+    print(f"GPIO:\tset {output_gate} to {signal}.")
     GPIO.output(self.__output_ports[output_gate - 1], signal)

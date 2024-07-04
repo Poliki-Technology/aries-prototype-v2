@@ -5,8 +5,8 @@ import time
 
 load_dotenv()
 
-mainContext = context.Context(states.Yellow())
+mainContext = context.Context(states.Idle())
 
 while True:
   mainContext.taskLoop()
-  time.sleep(0.5)
+  time.sleep(0.1)
