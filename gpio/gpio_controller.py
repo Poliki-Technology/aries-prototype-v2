@@ -4,7 +4,6 @@ import time
 import os
 import RPi.GPIO as GPIO
 
-
 class GpioController:
   __input_ports = []
   __output_ports = []
