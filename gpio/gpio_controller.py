@@ -11,7 +11,7 @@ class GpioController:
   __output_invert = []
 
   def __check_config(self, cfg):
-    result = len(cfg["output_ports"]) == len(self.__output_ports) and result
+    result = len(cfg["output_ports"]) == len(self.__output_ports)
     result = len(cfg["input_ports"]) == len(self.__input_ports) and result
     result = len(cfg["output_invert"]) == len(self.__output_ports) and result
     result = len(cfg["input_invert"]) == len(self.__input_ports) and result
@@ -48,7 +48,7 @@ class GpioController:
     self.__input_ports = [int(i) for i in cfg["input_ports"]]
     self.__output_ports = [int(i) for i in cfg["output_ports"]]
     self.__input_invert = [bool(int(i)) for i in cfg["input_invert"]]
-    self.__output_invert = [bool(int(i)) for i in cfg("output_invert")]
+    self.__output_invert = [bool(int(i)) for i in cfg["output_invert"]]
     for port in self.__input_ports:
       GPIO.setup(port, GPIO.IN)
     for port in self.__output_ports:
@@ -63,7 +63,7 @@ class GpioController:
     return
 
   def __get_raw_input(self, input_gate):
-    return bool(GPIO.input(self.__input_ports[input_gate - 1])) != bool(self.__input_invert(input_gate - 1))
+    return bool(GPIO.input(self.__input_ports[input_gate - 1])) != bool(self.__input_invert[input_gate - 1])
 
   def get_input(self, input_gate, signal_counts = 5, delay = 0.01):
     print(f"GPIO:\treading input from {input_gate} {signal_counts} times.")
@@ -75,4 +75,4 @@ class GpioController:
 
   def post_output(self, output_gate, signal):
     print(f"GPIO:\tset {output_gate} to {signal}.")
-    GPIO.output(self.__output_ports[output_gate - 1], bool(signal) != bool(self.__output_invert(output_gate - 1)))
+    GPIO.output(self.__output_ports[output_gate - 1], bool(signal) != bool(self.__output_invert[output_gate - 1]))
