@@ -1,5 +1,5 @@
 from __future__ import annotations
-import state_pattern.states as states
+from state_pattern.states.i_state import IState
 from gpio.gpio_controller import GpioController
 
 # the context class contains a _state that references the concrete state and setState method to change between states.
@@ -7,14 +7,14 @@ class Context:
     _state = None
     _gpioController = None
 
-    def __init__(self, state: states.State) -> None:
+    def __init__(self, state: IState) -> None:
         self.setState(state)
         self._gpioController = GpioController()
 
     def getGpioController(self) -> GpioController:
         return self._gpioController
 
-    def setState(self, state: states.State):
+    def setState(self, state: IState):
         print(f"Context: Transitioning to {type(state).__name__}")
         if self._state != None:
             self._state.ceaseState()
