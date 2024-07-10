@@ -9,14 +9,14 @@ class Scheduler():
   def __init__(self):
     self.scheduler = {
       "morning": {
-        "minute": os.getenv('MORNING_MINUTE') or 31,
-        "first_hour": os.getenv("MORNING_FIRST_HR") or 6,
-        "last_hour": os.getenv("MORNING_LAST_HR") or 16,
+        "minute": int(os.getenv('MORNING_MINUTE')) or 31,
+        "first_hour": int(os.getenv("MORNING_FIRST_HR")) or 6,
+        "last_hour": int(os.getenv("MORNING_LAST_HR")) or 16,
       },
       "evening": {
-        "minute": os.getenv('EVENING_MINUTE') or 1,
-        "first_hour": os.getenv("EVENING_FIRST_HR") or 17,
-        "last_hour": os.getenv("EVENING_LAST_HR") or 23,
+        "minute": int(os.getenv('EVENING_MINUTE')) or 1,
+        "first_hour": int(os.getenv("EVENING_FIRST_HR")) or 17,
+        "last_hour": int(os.getenv("EVENING_LAST_HR")) or 23,
       }
     }
 
