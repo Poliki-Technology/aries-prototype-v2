@@ -6,7 +6,7 @@ import state_pattern.states.wait_mix as wait
 class EveningPumpOn(IState):
     __startTimestamp = 0
     def __pumpTimeout(self) -> bool:
-        return datetime.now() - self.__startTimestamp() >= timedelta(minutes=20)
+        return datetime.now() - self.__startTimestamp >= timedelta(minutes=20)
     
     def __tankEmpty(self) -> bool:
         gpio = self._context.getGpioController()
