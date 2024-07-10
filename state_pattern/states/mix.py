@@ -14,9 +14,7 @@ class Mix(IState):
     def applyState(self) -> None:
         gpio = self._context.getGpioController()
         gpio.post_output(1, True)
-        gpio.post_output(3, True)
 
     def ceaseState(self) -> None:
         gpio = self._context.getGpioController()
         gpio.post_output(1, False)
-        gpio.post_output(3, False)

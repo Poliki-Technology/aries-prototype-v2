@@ -66,7 +66,7 @@ class GpioController:
     return bool(GPIO.input(self.__input_ports[input_gate - 1])) != bool(self.__input_invert[input_gate - 1])
 
   def get_input(self, input_gate, signal_counts = 5, delay = 0.01):
-    print(f"GPIO:\treading input from {input_gate} {signal_counts} times.")
+    # print(f"GPIO:\treading input from {input_gate} {signal_counts} times.")
     result = 0
     for _ in range(signal_counts):
       result += self.__get_raw_input(input_gate)
