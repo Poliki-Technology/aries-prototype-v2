@@ -1,13 +1,13 @@
 from abc import ABC, abstractmethod
-import state_pattern.context as context
+from state_pattern.context import Context
 
 class IState(ABC):
     @property
-    def context(self) -> context.Context:
+    def context(self) -> Context:
         return self._context
 
     @context.setter
-    def context(self, context: context.Context) -> None:
+    def context(self, context: Context) -> None:
         self._context = context
 
     @abstractmethod

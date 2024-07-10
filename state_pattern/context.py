@@ -1,6 +1,6 @@
 from __future__ import annotations
-from state_pattern.states.i_state import IState
 from gpio.gpio_controller import GpioController
+from state_pattern.states.i_state import IState
 
 # the context class contains a _state that references the concrete state and setState method to change between states.
 class Context:

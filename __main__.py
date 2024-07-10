@@ -1,11 +1,11 @@
 import state_pattern.context as context
-import state_pattern.states as states
+from state_pattern.states.idle import Idle
 from dotenv import load_dotenv
 import time
 
 load_dotenv()
 
-mainContext = context.Context(states.Idle())
+mainContext = context.Context(Idle())
 
 while True:
   mainContext.taskLoop()
