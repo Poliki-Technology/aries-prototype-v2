@@ -1,7 +1,7 @@
 from state_pattern.states.i_state import IState
-from state_pattern.states.mix import Mix
-from state_pattern.states.morning_pump_on import MorningPumpOn
-from state_pattern.states.evening_pump_on import EveningPumpOn
+import state_pattern.states.mix as mix
+import state_pattern.states.morning_pump_on as morning
+import state_pattern.states.evening_pump_on as evening
 
 class Idle(IState):
     def __openNutrientCondition(self) -> bool:
@@ -16,15 +16,15 @@ class Idle(IState):
 
     def taskLoop(self) -> None:
         if self.__openNutrientCondition():
-            self._context.setState(Mix())
+            self._context.setState(mix.Mix())
             return
 
         if self.__morningPumpCondition():
-            self._context.setState(MorningPumpOn())
+            self._context.setState(morning.MorningPumpOn())
             return
 
         if self.__eveningPumpCondition():
-            self._context.setState(EveningPumpOn())
+            self._context.setState(evening.EveningPumpOn())
 
     def applyState(self) -> None:
         return # do nothing

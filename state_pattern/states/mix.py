@@ -1,5 +1,5 @@
 from state_pattern.states.i_state import IState
-from state_pattern.states.irrigate import Irrigate
+import state_pattern.states.irrigate as irr
 
 class Mix(IState):
     def __changeStateCondition(self) -> bool:
@@ -9,7 +9,7 @@ class Mix(IState):
     def taskLoop(self) -> None:
         if not self.__changeStateCondition():
             return
-        self._context.setState(Irrigate())
+        self._context.setState(irr.Irrigate())
 
     def applyState(self) -> None:
         gpio = self._context.getGpioController()

@@ -1,5 +1,5 @@
 from state_pattern.states.i_state import IState
-from state_pattern.states.idle import Idle
+import state_pattern.states.idle as idle
 
 class EveningPumpOn(IState):
     def __changeStateCondition(self) -> bool:
@@ -8,7 +8,7 @@ class EveningPumpOn(IState):
     def taskLoop(self) -> None:
         if not self.__changeStateCondition():
             return
-        self._context.setState(Idle())
+        self._context.setState(idle.Idle())
 
     def applyState(self) -> None:
         gpio = self._context.getGpioController()
