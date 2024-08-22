@@ -12,11 +12,11 @@ class LightOn(IState):
 
     def applyState(self) -> None:
         gpio = self._context.getGpioController()
-        gpio.post_output(6, True)
+        gpio.post_output(8, True)
 
     def ceaseState(self) -> None:
         gpio = self._context.getGpioController()
-        gpio.post_output(6, False)
+        gpio.post_output(8, False)
 
 class LightOff(IState):
     def __changeState(self) -> bool:

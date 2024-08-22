@@ -21,9 +21,9 @@ class MorningPumpOn(IState):
 
     def applyState(self) -> None:
         gpio = self._context.getGpioController()
-        gpio.post_output(4, True)
+        gpio.post_output(5, True)
         self.__startTimestamp = datetime.now()
 
     def ceaseState(self) -> None:
         gpio = self._context.getGpioController()
-        gpio.post_output(4, False)
+        gpio.post_output(5, False)
