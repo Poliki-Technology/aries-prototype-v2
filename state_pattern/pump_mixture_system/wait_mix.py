@@ -1,5 +1,5 @@
-from state_pattern.states.i_state import IState
-import state_pattern.states.mix as mix
+from state_pattern.pump_mixture_system.i_state import IState
+import state_pattern.pump_mixture_system.mix_states as mix
 from datetime import datetime, timedelta
 
 class WaitMix(IState):
@@ -10,7 +10,7 @@ class WaitMix(IState):
     def taskLoop(self) -> None:
         if not self.__changeStateCondition():
             return
-        self._context.setState(mix.Mix())
+        self._context.setState(mix.BeginMix())
 
     def applyState(self) -> None:
         self.__stateTimestamp = datetime.now()

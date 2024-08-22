@@ -1,9 +1,9 @@
-from state_pattern.states.i_state import IState
+from state_pattern.pump_mixture_system.i_state import IState
 from datetime import datetime, timedelta
-import state_pattern.states.idle as idle
-import state_pattern.states.wait_mix as wait
+import state_pattern.pump_mixture_system.idle as idle
+import state_pattern.pump_mixture_system.wait_mix as wait
 
-class MorningPumpOn(IState):
+class EveningPumpOn(IState):
     __startTimestamp = 0
     def __pumpTimeout(self) -> bool:
         return datetime.now() - self.__startTimestamp >= timedelta(minutes=20)
@@ -21,9 +21,9 @@ class MorningPumpOn(IState):
 
     def applyState(self) -> None:
         gpio = self._context.getGpioController()
-        gpio.post_output(3, True)
+        gpio.post_output(5, True)
         self.__startTimestamp = datetime.now()
 
     def ceaseState(self) -> None:
         gpio = self._context.getGpioController()
-        gpio.post_output(3, False)
+        gpio.post_output(5, False)

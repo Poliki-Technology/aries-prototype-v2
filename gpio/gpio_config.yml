@@ -1,4 +1,4 @@
 # Customize these variables base on each project
 gpio:
-  output_ports: 5
+  output_ports: 6
   input_ports: 3

@@ -1,7 +1,7 @@
-from state_pattern.states.i_state import IState
-import state_pattern.states.mix_states as mix
-import state_pattern.states.morning_pump_on as morning
-import state_pattern.states.evening_pump_on as evening
+from state_pattern.pump_mixture_system.i_state import IState
+import state_pattern.pump_mixture_system.mix_states as mix
+import state_pattern.pump_mixture_system.morning_pump_on as morning
+import state_pattern.pump_mixture_system.evening_pump_on as evening
 from scheduling.scheduling import Scheduler
 
 class Idle(IState):

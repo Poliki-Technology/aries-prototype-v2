@@ -1,9 +1,9 @@
-from state_pattern.states.i_state import IState
+from state_pattern.pump_mixture_system.i_state import IState
 from datetime import datetime, timedelta
-import state_pattern.states.idle as idle
-import state_pattern.states.wait_mix as wait
+import state_pattern.pump_mixture_system.idle as idle
+import state_pattern.pump_mixture_system.wait_mix as wait
 
-class EveningPumpOn(IState):
+class MorningPumpOn(IState):
     __startTimestamp = 0
     def __pumpTimeout(self) -> bool:
         return datetime.now() - self.__startTimestamp >= timedelta(minutes=20)

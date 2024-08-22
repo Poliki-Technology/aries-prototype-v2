@@ -1,6 +1,5 @@
 from __future__ import annotations
-# from state_pattern.states.i_state import IState
-import state_pattern.states as sp
+import state_pattern.pump_mixture_system as sp
 from gpio.gpio_controller import GpioController
 
 # the context class contains a _state that references the concrete state and setState method to change between states.
